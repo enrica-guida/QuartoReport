@@ -1,0 +1,116 @@
+
+---
+title: "Measles Vaccination Coverage Analysis with R"
+format: html
+
+---
+
+# Measles Vaccination Coverage Analysis with R
+
+## Introduction
+
+This document presents a visual analysis of measles vaccination coverage across various countries.
+
+## Bar Chart: Vaccination Coverage by Country in 2018
+
+```{r}
+#| warning: false
+
+library(ggplot2)
+data <- read.csv('Measles.csv')
+data_2018 <- subset(data, time_period == 2018)
+
+ggplot(data_2018, aes(x=reorder(country, -obs_value), y=obs_value, fill=country)) +
+  geom_bar(stat="identity") +
+  labs(title="Measles Vaccination Coverage by Country in 2018", x="Country", y="Coverage (%)") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+## Line Chart: Trends of Vaccination Over Time in Afghanistan
+
+```{r}
+#| warning: false
+
+afghanistan_data <- subset(data, country == 'Afghanistan')
+
+ggplot(afghanistan_data, aes(x=time_period, y=obs_value, group=1)) +
+  geom_line() +
+  geom_point() +
+  labs(title="Trends of Measles Vaccination Over Time in Afghanistan", x="Year", y="Coverage (%)")
+```
+
+## Map Visualization: Global Distribution of Measles Vaccination Coverage (2018)
+
+```{r}
+#| warning: false
+
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+data_2018$country_code <- tolower(data_2018$alpha_3_code)
+
+world <- merge(world, data_2018, by.x = 'iso_a3', by.y = 'alpha_3_code', all.x = TRUE)
+
+ggplot() +
+  geom_sf(data = world, aes(fill = obs_value)) +
+  scale_fill_viridis_c() +
+  labs(fill="Vaccination Coverage (%)", title="Global Distribution of Measles Vaccination Coverage (2018)")
+```
+
+## Findings
+
+1. Measles vaccination coverage in 2018 shows significant global disparities with some countries achieving high coverage rates while others lag significantly.
+2. The trend in Afghanistan indicates fluctuating measles vaccination rates over the years, pointing to challenges in healthcare delivery and policy implementation.
+3. The map visualization highlights countries with insufficient coverage, suggesting areas where international health interventions could be crucial.
+
+---
+
+```{r}
+#| warning: false
+ 
+library(dplyr)
+library(tidyr)
+
+data_c <- read.csv('Children under 5 Mortality_v1.csv')
+
+summary_stats <- data_c %>%
+  group_by(ParentLocation, Period) %>%
+  summarize(Mean_Child_Mortality = mean(child.mortality, na.rm = TRUE),
+            Median_Child_Mortality = median(child.mortality, na.rm = TRUE),
+            Min_Child_Mortality = min(child.mortality, na.rm = TRUE),
+            Max_Child_Mortality = max(child.mortality, na.rm = TRUE))
+
+
+```
+## Line Chart: Plot for Child Mortality
+
+```{r}
+#| warning: false
+
+#time_series_plot <- 
+  ggplot(data_c, aes(x = Period, y = child.mortality, group = SpatialDimValueCode, color = SpatialDimValueCode)) +
+  geom_line() +
+  theme_minimal() +
+  labs(title = "Time Series of Child Mortality",
+       x = "Year",
+       y = "Child Mortality Rate",
+       color = "Country")
+
+
+```
+## Line Chart: Plot for Child Mortality
+
+```{r}
+#| warning: false
+
+#time_series_plot <- 
+ ggplot(data_c, aes(x = ParentLocation, y = child.mortality, fill = ParentLocation)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Child Mortality Rates by Location",
+       x = "Location",
+       y = "Child Mortality Rate")
+
+
+```

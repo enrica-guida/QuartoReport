@@ -1,0 +1,64 @@
+
+---
+title: "Country Indicators Analysis with R"
+format: html
+---
+
+# Country Indicators Analysis with R
+
+## Introduction
+
+This document presents a visual analysis of country-level indicators such as population, GDP, GNI, and life expectancy using R.
+
+### Scatter Plot: GDP per Capita vs. Life Expectancy
+
+```{r}
+library(ggplot2)
+data <- read.csv('unicef_metadata.csv')
+data_complete <-  subset(data, year == 2020)
+#data_complete <- na.omit(data[c('GDP.per.capita..constant.2015.US..', 'Life.expectancy.at.birth..total..years.')])
+
+ggplot(data_complete, aes(x=GDP.per.capita..constant.2015.US.., y=Life.expectancy.at.birth..total..years.)) +
+  geom_point(aes(color=country), alpha=0.5) +
+  labs(title="GDP per Capita vs. Life Expectancy", x="GDP per Capita (constant 2015 US$)", y="Life Expectancy at Birth (years)") +
+  theme_minimal()
+```
+
+## Bar Chart: Population by Country (2020)
+
+```{r}
+data_2020 <- subset(data, year == 2020)
+
+ggplot(data_2020[1:35,], aes(x=reorder(country, -Population..total), y=Population..total)) +
+  geom_bar(stat="identity", fill="steelblue") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title="Population by Country in 2020", x="Country", y="Total Population")
+```
+
+## Map Visualization: GDP per Capita (2020)
+
+```{r}
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+data_2020 <- subset(data, year == 2020)
+data_2020$country_code <- tolower(data_2020$alpha_3_code)
+
+world <- merge(world, data_2020, by.x = 'iso_a3', by.y = 'country_code', all.x = TRUE)
+
+ggplot() +
+  geom_sf(data = world, aes(fill = GDP.per.capita..constant.2015.US..)) +
+  scale_fill_viridis_c() +
+  labs(fill="GDP per Capita", title="GDP per Capita (2020) by Country") +
+  theme_minimal()
+```
+
+## Findings
+
+1. A clear positive correlation between GDP per capita and life expectancy indicates that wealthier countries tend to have higher life expectancies.
+2. The population distribution in 2020 shows significant differences among countries, reflecting a wide range of demographic scales.
+3. The map visualization of GDP per capita highlights economic disparities, with wealthier nations depicted in darker colors.
+
+---
+

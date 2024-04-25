@@ -1,0 +1,246 @@
+---
+title: "IS THE WORLD A BETTER PLACE FOR CHILDREN?"
+format: 
+  html:
+    mainfont: Times New Roman
+execute:
+  echo: false
+---
+
+### *An Analysis of the correlation between GDP, Measles Vaccination and Children Well-Being*
+
+### Introduction
+
+Undoubtedly, the world is a richer place given the widespread growth of GDP in recent decades. The new economic prosperity has led to an extension of life expectancy worldwide, impacting particularly on the Emerging Countries.
+
+```{r}
+#| warning: false
+library(dplyr)
+library(ggplot2)
+data <- read.csv('unicef_metadata.csv')
+data_1 <- data[data$year %in% c(1961, 2021) & data$country %in% c("China", "Ireland"), ]
+
+
+data_1 <- data_1 %>%
+  arrange(year, country) %>%
+  group_by(year) %>%
+  mutate(cumulative_sales = cumsum(Life.expectancy.at.birth..total..years.), 
+         label_position = cumulative_sales - 0.5 * Life.expectancy.at.birth..total..years.)
+
+
+
+ggplot(data_1, aes(y = factor(year), x = Life.expectancy.at.birth..total..years., fill = country)) + 
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(aes(label = country, x = label_position), 
+            position = position_stack(vjust = 0.5), 
+           color = "white", size = 3, fontface = "bold") +
+  scale_fill_manual(values = c("China" = "brown", "Ireland" = "orange")) + 
+  labs(x = "Year", y = "Sales", fill = "Country") +
+  ggtitle("Life expectancy at birth, total (years)") +
+  theme_minimal() +  theme(legend.position = "none") +
+   theme(panel.grid.major = element_blank())
+
+```
+
+## Vaccination Coverage by Country in 2018
+
+**But, unfortunately, it's not possible to claim that the world is a better place when 17,000 children under the age of 5 die every day, largely from vaccine-preventable disease, like Measles.**
+
+To reduce Measles Mortality rate UNICEF aims to leverage the GDP as a catalyst for countries that are lagging behind in the march of progress, funding immunization campaigns. 
+
+These efforts have been rewarded, as seen in the outcomes achieved in the last two decades in many lower-income countries. With the rise in GDP, there has been a notable increase in vaccination coverage. For instance, in countries such as China, where rapid economic growth has elevated its status from an emerging to a developed nation, **vaccination coverage has surged, with nearly 99% of children now receiving the second dose of the Measles vaccine.**
+
+```{r}
+#| warning: false
+library(dplyr)
+library(ggplot2)
+dataMM <- read.csv('Measles.csv') 
+
+data_2 <- dataMM[dataMM$time_period %in% c(2005, 2011, 2021) & dataMM$country %in% c("South Africa", "Azerbaijan", "Colombia", "Uzbekistan", "China", "India", "Japan"), ]
+
+
+# Create the plot
+ggplot(data_2, aes(x = country, y = obs_value, fill= factor(time_period))) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.9), colour = "black") +
+  geom_text(aes(label = round(obs_value, 1)), 
+            vjust =0.2, 
+            hjust = -0.5,
+            position = position_dodge(width = 01),
+            angle = 90,
+            color = "black") +
+  scale_fill_manual(values = c("2005" = "#F5DE98", "2011" = "#F59623", "2021" = "#300561")) +
+  labs(title = "The great impact of GDP on achieving 'herd immunity'",
+       subtitle = "The rise of children with the 2nd dose of measles vaccine\n2005, 2011, and 2021",
+       x = "Country",
+       y = "Value") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5), # Center the title
+        plot.subtitle = element_text(hjust = 0.5)) + # Center the subtitle 
+  ylim(0, 150)  +  # Set the y-axis range from 0 to 100 
+ theme(panel.grid.major = element_blank())
+
+
+
+
+```
+
+Such remarkable results **have significantly decreased the likelihood of mortality among children** under the age of 5 in numerous less developed countries, even reducing the percentage by half in some nations like Ghana.
+
+The profound importance of vaccination finds expression in its dual correlation with life expectancy and mortality rates. 
+
+```{r}
+#| warning: false
+
+data_M <- read.csv('Measles.csv')
+data_3 <- data_M[data_M$time_period %in% c(2000:2021) & data_M$country %in% c("Afghanistan", "Azerbaijan", "Bangladesh", "China", "Colombia", "Ghana", "India", "Iraq", "Japan", "Kenya"), ]
+
+
+
+
+# Create the stream graph
+ggplot(data_3, aes(x = time_period, y = obs_value, fill = country, group = country)) +
+  geom_area(position = 'stack') +
+  scale_x_continuous(breaks = seq(min(data_3$time_period), max(data_3$time_period), by = 1)) +
+  theme_minimal() +
+  theme(legend.position = "right") +
+  labs(title = "The Under 5 Mortality Rate Reduction as the Measles Coverage Increase",
+       subtitle = "a picture of the last 20 years",
+       x = "Time Period (data)",
+       y = "AVG. Children who received the 2nd dose of measles vaccine")+ 
+  theme(axis.text.x = element_text(angle = 90)) +  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+
+
+
+
+
+
+```
+
+Looking at 2021 data, a striking trend emerges: **where the proportion of children receiving the second dose of the vaccine is higher, life expectancy rises significantly, often yielding disparities of over twenty years between nations like Austria (81 years) and Somalia (55.97 years).**
+
+In contrast, as vaccination coverage expands, the risk of mortality among children under 5 declines significantly. In Austria, the death rate plummets to a mere 4%, showcasing the effectiveness of comprehensive vaccination programs. However, it's disheartening to note that in countries like Somalia, the figures persist at alarmingly high levels, with a probability of 111.4 deaths per 1000 live births by the age of 5. This underscores the urgent need for continued support and investment in healthcare infrastructure and vaccination initiatives to safeguard the lives of children worldwide.
+
+```{r}
+#| warning: false
+
+data <- read.csv('unicef_metadata.csv')
+data_M <- read.csv('Measles.csv') 
+data_11 <- data[data$year %in% c(2021), ]
+data_33 <- data_M[data_M$time_period %in% c(2021) , ]
+
+
+
+data_44 <- inner_join(data_11, data_33, by = "country")
+
+fun_color_range <- colorRampPalette(c("yellow", "red")) 
+my_colors <- fun_color_range(20)  
+
+
+ggplot(data_44, aes(y=Life.expectancy.at.birth..total..years., x=obs_value, color = obs_value)) +
+  geom_point(aes( alpha=0.8), size = 5) +  # Scatter points with varying colors for different years
+  geom_smooth(method=lm, se=FALSE, color="black") +  # Linear trend line without a confidence interval
+  labs(title="The Direct Relation Between Life Expectancy and Measles Immunization",
+       subtitle="2021",
+       x="Average children with the 2nd dose of measles-vax",
+       y="AVG life expectancy at birth (years)") +
+  theme_minimal() + # Minimal theme for a clean look
+ theme(legend.position = "none") +
+  scale_colour_gradientn(colors = my_colors   ) 
+
+
+```
+
+Yes, **GDP has actually increased in all countries**. However, this expansion has also determined a greater gap between high-income countries and low-income ones: **the GDP disparity between Europe and Africa has more than doubled from 1960 to the present day.**
+
+**The reduction of the well-entrenched inequality in wealth distribution is fundamental to funds vaccination campaigns, which are the most cost-effective, but the most impactful on children lives.** These childhood vaccines save more than five lives every minute, preventing up to three million deaths per year.
+
+```{r}
+#| warning: false
+
+data_U <- read.csv('Children under 5 Mortality Rate_9.csv')
+data_M <- read.csv('Measles.csv') 
+data_33 <- data_M[data_M$time_period %in% c(2021) , ]
+
+
+
+data_44 <- inner_join(data_U, data_33, by = "country")
+
+fun_color_range <- colorRampPalette(c("yellow", "red")) 
+my_colors <- fun_color_range(25)  
+
+
+ggplot(data_44, aes(y=FactValueNumeric, x=obs_value)) +
+  geom_point(aes( alpha=0.6), size = 5) +  # Scatter points with varying colors for different years
+  geom_smooth(method=lm, se=FALSE, color="black") +  # Linear trend line without a confidence interval
+  labs(title="The indirect relation between the under-five mortality\n rate and measeles immunization",
+       y="Under-five mortality rate (probability \n of dying by age 5 per 1000 live births)",
+       x="Average children with the 2nd dose of measles-vax") +
+  theme_minimal() + # Minimal theme for a clean look
+ theme(legend.position = "none") +
+  scale_colour_gradientn(colors = my_colors   ) 
+
+
+```
+
+Therefore, is crucial to persist in pushing our mission for a more equal world in which *all* childrens counts the same. 
+
+Thanks to our collective efforts we've witnessed remarkable results in many countries. Such as Afghanistan, where in  just 20 years, the percentage of measles-vaccinated children has surged from 2% to 49%. This monumental progress has directly translated into fewer children tragically losing their lives before the age of five: the probability of dying by age 5 per 1000 live births has dropped from 130,6 (2001) to 40,6 (2024) in Afghanistan.
+
+**We're almost there. With vaccines, we are one step closer to equality.**
+
+```{r}
+#| warning: false
+
+library(RColorBrewer)
+data_U <- read.csv('Children under 5 Mortality Rate_10.csv')
+
+data44 <- data_U[data_U$Period %in% c(2000:2021) , ]
+
+
+# Display the color palettes
+#display.brewer.all()
+
+# Choose a palette that fits your number of categories
+palette_name <- "YlOrRd"  # This is an example, choose based on your preference and number of categories
+
+
+ggplot(data44, aes(y=FactValueNumeric, x=Period, fill=ParentLocation)) +
+  geom_bar(position="stack", stat="identity") +  # Scatter points with varying colors for different years
+  #geom_smooth(method=lm, se=FALSE, color="black") +  # Linear trend line without a confidence interval
+  labs(title="Reduction of Under Five children Mortaility rate",
+       y="Under-five mortality rate (probability \n of dying by age 5 per 1000 live births)",
+       x="Year") +
+  theme_minimal() + # Minimal theme for a clean look
+ #theme(legend.position = "none") +
+   scale_fill_brewer(palette=palette_name) 
+
+```
+
+```{r}
+#| warning: false
+
+library(sf)
+library(rnaturalearth)
+library(rnaturalearthdata)
+world <- ne_countries(scale = "medium", returnclass = "sf")
+
+data <- read.csv('unicef_metadata.csv')
+data_1 <- data[data$year %in% c( 2021) , ]
+
+
+#data_2020$country_code <- tolower(data_2020$alpha_3_code)
+
+world <- merge(world, data_1, by.x = 'iso_a3', by.y = 'alpha_3_code', all.x = TRUE)
+
+ggplot() +
+  geom_sf(data = world, aes(fill = GDP.per.capita..constant.2015.US..)) +
+ scale_fill_viridis_b(option = "plasma") + 
+  labs(fill="GDP per Capita", title="GDP per Capita (2021) by Country") +
+  theme_minimal()
+```
+
+*Thus, addressing the initial question:*
+
+**THE WORLD ISN'T A BETTER PLACE FOR CHILDREN—YET.**
+
+**BUT VACCINES ARE THE KEYS FOR A BRIGHTER TOMORROW.**

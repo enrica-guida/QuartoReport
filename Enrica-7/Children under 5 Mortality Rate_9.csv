@@ -1,0 +1,200 @@
+SpatialDimValueCode,ParentLocation,country,FactValueNumeric
+SMR,Europe,San Marino,1.72
+OMN,Eastern Mediterranean,Oman,10.14
+KAZ,Europe,Kazakhstan,10.27
+VGB,Americas,British Virgin Islands,10.46
+ARM,Europe,Armenia,10.72
+LBY,Eastern Mediterranean,Libya,10.77
+SLE,Africa,Sierra Leone,104.7
+TCD,Africa,Chad,107.1
+TON,Western Pacific,Tonga,11.14
+BLZ,Americas,Belize,11.19
+BRN,Western Pacific,Brunei Darussalam,11.48
+BRB,Americas,Barbados,11.91
+NGA,Africa,Nigeria,110.8
+SOM,Eastern Mediterranean,Somalia,111.8
+NER,Africa,Niger,115.2
+JAM,Americas,Jamaica,12.4
+SLV,Americas,El Salvador,12.43
+ECU,Americas,Ecuador,12.46
+IRN,Eastern Mediterranean,Iran (Islamic Republic of),12.63
+COL,Americas,Colombia,12.85
+BHS,Americas,Bahamas,13.16
+MEX,Americas,Mexico,13.24
+NIC,Americas,Nicaragua,13.26
+CPV,Africa,Cabo Verde,13.55
+VCT,Americas,Saint Vincent and the Grenadines,13.71
+PAN,Americas,Panama,13.87
+SYC,Africa,Seychelles,13.91
+UZB,Europe,Uzbekistan,14.07
+PER,Americas,Peru,14.12
+MDA,Europe,Republic of Moldova,14.2
+BRA,Americas,Brazil,14.41
+KNA,Americas,Saint Kitts and Nevis,14.56
+JOR,Eastern Mediterranean,Jordan,14.6
+MNG,Western Pacific,Mongolia,14.73
+PSE,Eastern Mediterranean,Occupied Palestinian territory,14.83
+PRK,South-East Asia,Democratic People's Republic of Korea,15.4
+STP,Africa,Sao Tome and Principe,15.43
+GRD,Americas,Grenada,16.18
+PLW,Western Pacific,Palau,16.25
+TUN,Eastern Mediterranean,Tunisia,16.32
+TTO,Americas,Trinidad and Tobago,16.33
+HND,Americas,Honduras,16.56
+MUS,Africa,Mauritius,16.62
+WSM,Western Pacific,Samoa,16.72
+SUR,Americas,Suriname,17.18
+KGZ,Europe,Kyrgyzstan,17.4
+MAR,Eastern Mediterranean,Morocco,18
+PRY,Americas,Paraguay,18.16
+AZE,Europe,Azerbaijan,18.59
+SLB,Western Pacific,Solomon Islands,18.79
+EGY,Eastern Mediterranean,Egypt,18.96
+EST,Europe,Estonia,2
+SGP,Western Pacific,Singapore,2.09
+SVN,Europe,Slovenia,2.17
+FIN,Europe,Finland,2.17
+NOR,Europe,Norway,2.17
+MNE,Europe,Montenegro,2.26
+JPN,Western Pacific,Japan,2.3
+SWE,Europe,Sweden,2.46
+ITA,Europe,Italy,2.61
+ISL,Europe,Iceland,2.64
+BLR,Europe,Belarus,2.72
+LUX,Europe,Luxembourg,2.73
+CZE,Europe,Czechia,2.75
+AND,Europe,Andorra,2.76
+CYP,Europe,Cyprus,2.79
+KOR,Western Pacific,Republic of Korea,2.89
+MCO,Europe,Monaco,2.92
+VNM,Western Pacific,Viet Nam,20.6
+TUV,Western Pacific,Tuvalu,21.25
+IDN,South-East Asia,Indonesia,22.17
+SYR,Eastern Mediterranean,Syrian Arab Republic,22.27
+DZA,Africa,Algeria,22.34
+GTM,Americas,Guatemala,23.02
+VUT,Western Pacific,Vanuatu,23.21
+NIU,Western Pacific,Niue,24.13
+VEN,Americas,Venezuela (Bolivarian Republic of),24.23
+IRQ,Eastern Mediterranean,Iraq,24.52
+BOL,Americas,Bolivia (Plurinational State of),24.69
+KHM,Western Pacific,Cambodia,24.76
+LCA,Americas,Saint Lucia,24.82
+FSM,Western Pacific,Micronesia (Federated States of),24.85
+PHL,Western Pacific,Philippines,25.74
+BTN,South-East Asia,Bhutan,26.69
+NPL,South-East Asia,Nepal,27.16
+BGD,South-East Asia,Bangladesh,27.27
+NRU,Western Pacific,Nauru,27.59
+GUY,Americas,Guyana,27.68
+FJI,Western Pacific,Fiji,27.73
+MHL,Western Pacific,Marshall Islands,29.73
+ESP,Europe,Spain,3.05
+PRT,Europe,Portugal,3.1
+IRL,Europe,Ireland,3.15
+LTU,Europe,Lithuania,3.31
+ISR,Europe,Israel,3.36
+DEU,Europe,Germany,3.57
+DNK,Europe,Denmark,3.58
+AUT,Europe,Austria,3.66
+LVA,Europe,Latvia,3.68
+GRC,Europe,Greece,3.71
+AUS,Western Pacific,Australia,3.71
+CHE,Europe,Switzerland,3.83
+IND,South-East Asia,India,30.62
+TJK,Europe,Tajikistan,31.42
+ZAF,Africa,South Africa,32.85
+DOM,Americas,Dominican Republic,33
+BWA,Africa,Botswana,34.87
+DMA,Americas,Dominica,35.89
+KEN,Africa,Kenya,37.15
+ERI,Africa,Eritrea,38.09
+SEN,Africa,Senegal,38.6
+NAM,Africa,Namibia,39.04
+RWA,Africa,Rwanda,39.44
+GAB,Africa,Gabon,39.75
+HUN,Europe,Hungary,4
+AIA,Americas,Anguilla,4.05
+NLD,Europe,Netherlands,4.05
+BEL,Europe,Belgium,4.1
+GBR,Europe,United Kingdom of Great Britain and Northern Ireland,4.19
+POL,Europe,Poland,4.35
+FRA,Europe,France,4.35
+TCA,Americas,Turks and Caicos Islands,4.49
+HRV,Europe,Croatia,4.64
+NZL,Western Pacific,New Zealand,4.73
+MRT,Africa,Mauritania,40.5
+TKM,Europe,Turkmenistan,41.43
+MMR,South-East Asia,Myanmar,41.81
+MWI,Africa,Malawi,41.9
+UGA,Africa,Uganda,42.13
+LAO,Western Pacific,Lao People's Democratic Republic,42.51
+PNG,Western Pacific,Papua New Guinea,42.81
+COG,Africa,Congo,42.97
+GHA,Africa,Ghana,43.97
+ETH,Africa,Ethiopia,46.81
+TZA,Africa,United Republic of Tanzania,47.12
+GMB,Africa,Gambia,47.89
+KIR,Western Pacific,Kiribati,48.23
+ZWE,Africa,Zimbabwe,49.52
+COM,Africa,Comoros,49.72
+CUB,Americas,Cuba,5
+CAN,Americas,Canada,5.04
+RUS,Europe,Russian Federation,5.05
+MSR,Americas,Montserrat,5.27
+MKD,Europe,The former Yugoslav Republic of Macedonia,5.31
+QAT,Eastern Mediterranean,Qatar,5.31
+SRB,Europe,Serbia,5.49
+BIH,Europe,Bosnia and Herzegovina,5.6
+SVK,Europe,Slovakia,5.63
+URY,Americas,Uruguay,5.82
+MLT,Europe,Malta,5.83
+MDV,South-East Asia,Maldives,5.96
+TLS,South-East Asia,Timor-Leste,50.55
+BDI,Africa,Burundi,52.6
+SWZ,Africa,Eswatini,52.63
+DJI,Eastern Mediterranean,Djibouti,54.14
+SDN,Eastern Mediterranean,Sudan,54.9
+AFG,Eastern Mediterranean,Afghanistan,55.66
+ZMB,Africa,Zambia,57.69
+HTI,Americas,Haiti,58.63
+ATG,Americas,Antigua and Barbuda,6.14
+USA,Americas,United States of America,6.24
+BGR,Europe,Bulgaria,6.32
+ARE,Eastern Mediterranean,United Arab Emirates,6.37
+ROU,Europe,Romania,6.43
+CHL,Americas,Chile,6.55
+SAU,Eastern Mediterranean,Saudi Arabia,6.72
+LKA,South-East Asia,Sri Lanka,6.75
+BHR,Eastern Mediterranean,Bahrain,6.92
+ARG,Americas,Argentina,6.92
+CHN,Western Pacific,China,6.93
+YEM,Eastern Mediterranean,Yemen,61.91
+TGO,Africa,Togo,62.6
+PAK,Eastern Mediterranean,Pakistan,63.33
+MDG,Africa,Madagascar,66
+AGO,Africa,Angola,69.42
+MOZ,Africa,Mozambique,69.56
+CMR,Africa,Cameroon,69.79
+COK,Western Pacific,Cook Islands,7.17
+MYS,Western Pacific,Malaysia,7.56
+CRI,Americas,Costa Rica,7.65
+LSO,Africa,Lesotho,72.93
+GNB,Africa,Guinea-Bissau,74.31
+CIV,Africa,Côte d’Ivoire,74.79
+LBR,Africa,Liberia,76.04
+GNQ,Africa,Equatorial Guinea,76.78
+COD,Africa,Democratic Republic of the Congo,78.96
+UKR,Europe,Ukraine,8.22
+LBN,Eastern Mediterranean,Lebanon,8.24
+THA,South-East Asia,Thailand,8.29
+KWT,Eastern Mediterranean,Kuwait,8.73
+TUR,Europe,Türkiye,8.98
+BFA,Africa,Burkina Faso,82.61
+BEN,Africa,Benin,83.52
+ALB,Europe,Albania,9.46
+GEO,Europe,Georgia,9.48
+MLI,Africa,Mali,97.07
+SSD,Africa,South Sudan,98.69
+GIN,Africa,Guinea,98.73
+CAF,Africa,Central African Republic,99.92
